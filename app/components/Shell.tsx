@@ -9,9 +9,9 @@ export function Header() {
     <header className="site-header">
       <Brand />
       <nav aria-label="Main navigation">
-        <a href="/methodology">The science</a>
-        <a href="/toolkit">Your toolkit</a>
-        <a className="support-nav" href="/support"><span aria-hidden="true">♡</span> Get support</a>
+        <a href="/methodology">The Science</a>
+        <a href="/toolkit">Your Toolkit</a>
+        <a className="support-nav" href="/support"><span aria-hidden="true">♡</span> Get Support</a>
       </nav>
       <a className="button button-small" href="/assessment">Take the test <span aria-hidden="true">→</span></a>
     </header>

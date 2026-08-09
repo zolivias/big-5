@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
-  openGraph: { title: "Path Five", description: "Five traits. Your path forward.", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Path Five — Five traits. Your path forward." }] },
+  openGraph: { title: "Path Five", description: "Five traits. Your path forward.", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Path Five: Five traits. Your path forward." }] },
   twitter: { card: "summary_large_image", title: "Path Five", description: "Five traits. Your path forward.", images: ["/og.png"] },
 };
 

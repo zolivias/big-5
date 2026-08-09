@@ -16,7 +16,14 @@ export function loadProfile(): LocalProfile {
   if (typeof window === "undefined") return emptyProfile;
   try {
     const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-    return parsed?.version === 1 ? { ...emptyProfile, ...parsed } : emptyProfile;
+    if (parsed?.version !== 1) return emptyProfile;
+    const profile = { ...emptyProfile, ...parsed } as LocalProfile;
+    profile.scores = profile.scores.map((item) => {
+      if (item.trait !== "emotionalStability" || item.label === "Neuroticism") return item;
+      const score = 100 - item.score;
+      return { ...item, label: "Neuroticism", score, band: score < 40 ? "lower" : score > 60 ? "higher" : "middle" };
+    });
+    return profile;
   } catch {
     return emptyProfile;
   }
