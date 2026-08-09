@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PageShell } from "./Shell";
 
 const traits = [
@@ -17,7 +16,7 @@ export function HomePage() {
           <p className="eyebrow"><span aria-hidden="true">✦</span> Science-backed self-discovery</p>
           <h1>Five traits.<br /><em>Your path</em> forward.</h1>
           <p className="hero-lede">Understand the patterns that shape how you think, connect, and grow—then turn insight into small steps that actually fit you.</p>
-          <div className="hero-actions"><Link className="button" href="/assessment">Discover your traits <span aria-hidden="true">→</span></Link><Link className="text-link" href="/methodology">See how it works <span aria-hidden="true">↘</span></Link></div>
+          <div className="hero-actions"><a className="button" href="/assessment">Discover your traits <span aria-hidden="true">→</span></a><a className="text-link" href="/methodology">See how it works <span aria-hidden="true">↘</span></a></div>
           <div className="trust-row"><span>About 8 minutes</span><span>Private by design</span><span>Free to explore</span></div>
         </div>
         <div className="portrait-card" aria-label="Illustrative preview of the five personality traits">
@@ -43,10 +42,10 @@ export function HomePage() {
           <article><span className="step-number">02</span><h3>See the whole picture</h3><p>Explore five trait spectrums with balanced context—strengths, tradeoffs, and nuance.</p></article>
           <article><span className="step-number">03</span><h3>Try what fits</h3><p>Choose a goal and get practical experiments shaped around your results, not a personality label.</p></article>
         </div>
-        <Link className="button button-light" href="/assessment">Start your path <span aria-hidden="true">→</span></Link>
+        <a className="button button-light" href="/assessment">Start your path <span aria-hidden="true">→</span></a>
       </section>
 
-      <section className="science-callout"><div><p className="eyebrow">Grounded, not diagnostic</p><h2>Personality is one part of your story.</h2></div><p>The Big Five is a widely researched framework for describing patterns—not measuring your worth, diagnosing mental health, or predicting who you must become.</p><Link href="/methodology" className="text-link">Read our approach →</Link></section>
+      <section className="science-callout"><div><p className="eyebrow">Grounded, not diagnostic</p><h2>Personality is one part of your story.</h2></div><p>The Big Five is a widely researched framework for describing patterns—not measuring your worth, diagnosing mental health, or predicting who you must become.</p><a href="/methodology" className="text-link">Read our approach →</a></section>
     </PageShell>
   );
 }

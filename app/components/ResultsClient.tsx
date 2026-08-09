@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { PageShell } from "./Shell";
 import { loadProfile } from "../../lib/storage";
@@ -38,17 +37,17 @@ const interpretation: Record<TraitKey, Record<TraitScore["band"], { headline: st
 export function ResultsClient() {
   const [scores, setScores] = useState<TraitScore[]>([]);
   useEffect(() => { queueMicrotask(() => setScores(loadProfile().scores)); }, []);
-  if (!scores.length) return <PageShell><section className="empty-state"><p className="eyebrow">No results yet</p><h1>Your five traits are waiting.</h1><p>Complete the assessment to see your personal trait landscape.</p><Link className="button" href="/assessment">Take the test →</Link></section></PageShell>;
+  if (!scores.length) return <PageShell><section className="empty-state"><p className="eyebrow">No results yet</p><h1>Your five traits are waiting.</h1><p>Complete the assessment to see your personal trait landscape.</p><a className="button" href="/assessment">Take the test →</a></section></PageShell>;
   const top = [...scores].sort((a, b) => b.score - a.score)[0];
   return (
     <PageShell>
-      <section className="results-hero"><p className="eyebrow">Your trait landscape</p><h1>This is a snapshot,<br /><em>not a label.</em></h1><p>Your answers point to patterns—not limits. Explore each trait, notice what resonates, and keep what helps.</p><div className="results-actions"><Link className="button" href="/toolkit">Build my toolkit →</Link><button className="ghost-button" onClick={() => window.print()}>Print results</button></div></section>
+      <section className="results-hero"><p className="eyebrow">Your trait landscape</p><h1>This is a snapshot,<br /><em>not a label.</em></h1><p>Your answers point to patterns—not limits. Explore each trait, notice what resonates, and keep what helps.</p><div className="results-actions"><a className="button" href="/toolkit">Build my toolkit →</a><button className="ghost-button" onClick={() => window.print()}>Print results</button></div></section>
       <section className="result-summary" aria-label="Your five trait scores">
         <div className="radial-summary"><span className="radial-score">{top.score}</span><span>highest score</span><strong>{top.label}</strong></div>
         <div className="summary-bars">{scores.map((item) => <div key={item.trait}><div className="bar-label"><strong>{item.label}</strong><span>{item.score}/100</span></div><div className="score-track"><span style={{ width: `${item.score}%` }} /></div></div>)}</div>
       </section>
       <section className="results-detail"><div className="section-heading"><p className="section-kicker">Look closer</p><h2>Five tendencies, many ways to be.</h2></div>{scores.map((item, index) => { const copy = interpretation[item.trait][item.band]; return <article className="result-card" key={item.trait}><div className="result-index">0{index + 1}</div><div className="result-name"><p>{traitMeta[item.trait].short}</p><h3>{item.label}</h3><span className={`band-pill band-${item.band}`}>{item.band} range</span></div><div className="result-score"><strong>{item.score}</strong><span>out of 100</span></div><div className="result-copy"><h4>{copy.headline}</h4><p>{copy.text}</p><div className="balance-note"><strong>Keep in mind</strong><p>{copy.balance}</p></div></div></article>})}</section>
-      <section className="next-cta"><p className="eyebrow">Your next step</p><h2>Turn the pattern into practice.</h2><p>Pick what you want to work on, and Path Five will suggest a few small experiments shaped around your results.</p><Link className="button button-light" href="/toolkit">Open my toolkit →</Link></section>
+      <section className="next-cta"><p className="eyebrow">Your next step</p><h2>Turn the pattern into practice.</h2><p>Pick what you want to work on, and Path Five will suggest a few small experiments shaped around your results.</p><a className="button button-light" href="/toolkit">Open my toolkit →</a></section>
     </PageShell>
   );
 }

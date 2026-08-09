@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { questions, responseOptions } from "../../lib/questions";
 import { calculateScores } from "../../lib/scoring";
 import { emptyProfile, loadProfile, saveProfile } from "../../lib/storage";
@@ -35,7 +34,7 @@ export function AssessmentClient() {
 
   return (
     <main className="assessment-shell">
-      <div className="assessment-top"><Link className="brand" href="/"><span className="brand-mark">5</span><span>Path Five</span></Link><Link href="/support" className="support-nav">♡ Get support</Link></div>
+      <div className="assessment-top"><a className="brand" href="/"><span className="brand-mark">5</span><span>Path Five</span></a><a href="/support" className="support-nav">♡ Get support</a></div>
       <div className="assessment-progress" aria-label={`${answered} of 50 questions answered`}><span style={{ width: `${(answered / 50) * 100}%` }} /></div>
       <section className="question-card">
         <div className="question-meta"><span>Question {current + 1} of 50</span><span>{answered} answered</span></div>

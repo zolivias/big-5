@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { PageShell } from "./Shell";
 import { getRecommendations, goals } from "../../lib/recommendations";
@@ -12,7 +11,7 @@ export function ToolkitClient() {
   useEffect(() => { queueMicrotask(() => setProfile(loadProfile())); }, []);
   const items = useMemo(() => profile ? getRecommendations(profile.scores, profile.goal).filter((item) => !profile.dismissed.includes(item.id)) : [], [profile]);
   if (!profile) return <div className="loading-state" role="status">Opening your toolkit…</div>;
-  if (!profile.scores.length) return <PageShell><section className="empty-state"><p className="eyebrow">Personalize your toolkit</p><h1>Start with your five traits.</h1><p>Your assessment results help explain why each activity might fit.</p><Link className="button" href="/assessment">Take the test →</Link></section></PageShell>;
+  if (!profile.scores.length) return <PageShell><section className="empty-state"><p className="eyebrow">Personalize your toolkit</p><h1>Start with your five traits.</h1><p>Your assessment results help explain why each activity might fit.</p><a className="button" href="/assessment">Take the test →</a></section></PageShell>;
   const currentProfile = profile;
   function update(next: LocalProfile) { setProfile(next); saveProfile(next); }
   function setGoal(goal: GoalKey) { update({ ...currentProfile, goal, dismissed: [] }); }
