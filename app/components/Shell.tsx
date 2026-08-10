@@ -22,14 +22,14 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div><Brand /><p>Personality insight for your next chapter.</p></div>
-      <div className="footer-links"><a href="/methodology">Methodology</a><a href="/privacy">Privacy</a><a href="/disclaimer">Disclaimer</a><a href="/support">Get support</a></div>
+      <div className="footer-links"><a href="/methodology">Methodology</a><a href="/privacy">Privacy</a><a href="/disclaimer">Disclaimer</a><a href="/support">Get Support</a></div>
       <p className="footer-note">Path Five is educational and does not provide mental health diagnosis or treatment.</p>
     </footer>
   );
 }
 
 export function PageShell({ children }: { children: ReactNode }) {
-  return <><Header /><main>{children}</main><Footer /><a className="floating-support" href="/support" aria-label="Get support"><span aria-hidden="true">♡</span><span>Get support</span></a></>;
+  return <><Header /><main>{children}</main><Footer /><a className="floating-support" href="/support" aria-label="Get Support"><span aria-hidden="true">♡</span><span>Get Support</span></a></>;
 }
 
 export function InfoHero({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) {
