@@ -20,7 +20,7 @@ test("server-renders the Path Five landing page", async () => {
 });
 
 test("server-renders all public information routes", async () => {
-  for (const path of ["/methodology", "/support", "/privacy", "/disclaimer", "/assessment", "/results", "/toolkit"]) {
+  for (const path of ["/methodology", "/support", "/privacy", "/disclaimer", "/assessment", "/results", "/preferences", "/toolkit"]) {
     const response = await render(path);
     assert.equal(response.status, 200, path);
     assert.match(await response.text(), /Path Five/i, path);

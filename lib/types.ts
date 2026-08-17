@@ -2,6 +2,19 @@ export type TraitKey = "extraversion" | "agreeableness" | "conscientiousness" | 
 
 export type GoalKey = "studying" | "relationships" | "stress" | "confidence" | "reflection";
 
+export type ActivityPreferences = {
+  setting: "solo" | "pair" | "small-group" | "large-group" | "depends";
+  role: "lead" | "equal" | "participant" | "no-preference";
+  structure: "step-by-step" | "starting-point" | "options" | "unsure";
+  commitment: "once" | "monthly" | "weekly" | "most-days" | "depends";
+  novelty: "familiar" | "small-change" | "mixed" | "new" | "no-preference";
+  challenge: "easy" | "small" | "moderate" | "stretch" | "depends";
+  benefits: Array<"calm" | "mood" | "fun" | "energy" | "express" | "accomplished" | "connect" | "skill" | "understand" | "distract" | "none">;
+  constraints: Array<"free" | "quiet" | "private" | "no-supplies" | "home" | "outside" | "low-energy" | "no-screen" | "none">;
+  interests: Array<"writing" | "creative" | "movement" | "social" | "planning" | "games" | "mindfulness" | "music" | "learning" | "outside" | "open">;
+  time: "5" | "15" | "30" | "60" | "over-60" | "depends";
+};
+
 export type AssessmentItem = {
   id: number;
   text: string;
@@ -28,6 +41,18 @@ export type Recommendation = {
   duration: string;
   trait?: TraitKey;
   bands?: Array<TraitScore["band"]>;
+  preferenceTags?: {
+    settings?: ActivityPreferences["setting"][];
+    roles?: ActivityPreferences["role"][];
+    structures?: ActivityPreferences["structure"][];
+    commitments?: ActivityPreferences["commitment"][];
+    novelties?: ActivityPreferences["novelty"][];
+    challenges?: ActivityPreferences["challenge"][];
+    benefits?: ActivityPreferences["benefits"];
+    constraints?: ActivityPreferences["constraints"];
+    interests?: ActivityPreferences["interests"];
+    maxMinutes?: number;
+  };
 };
 
 export type LocalProfile = {
@@ -38,5 +63,6 @@ export type LocalProfile = {
   goal: GoalKey;
   bookmarks: string[];
   dismissed: string[];
+  activityPreferences?: ActivityPreferences;
   completedAt?: string;
 };

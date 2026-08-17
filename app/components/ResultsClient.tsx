@@ -41,13 +41,13 @@ export function ResultsClient() {
   const top = [...scores].sort((a, b) => b.score - a.score)[0];
   return (
     <PageShell>
-      <section className="results-hero"><p className="eyebrow">Your Big Five results</p><h1>Five scores based on<br /><em>your answers.</em></h1><p>These scores describe how you answered today. They are not fixed labels, and they can change over time.</p><div className="results-actions"><a className="button" href="/toolkit">Build my toolkit →</a><button className="ghost-button" onClick={() => window.print()}>Print results</button></div></section>
+      <section className="results-hero"><p className="eyebrow">Your Big Five results</p><h1>Five scores based on<br /><em>your answers.</em></h1><p>These scores describe how you answered today. They are not fixed labels, and they can change over time.</p><div className="results-actions"><a className="button" href="/preferences">Personalize my toolkit →</a><button className="ghost-button" onClick={() => window.print()}>Print results</button></div></section>
       <section className="result-summary" aria-label="Your five trait scores">
         <div className="radial-summary"><span className="radial-score">{top.score}</span><span>highest score</span><strong>{top.label}</strong></div>
         <div className="summary-bars">{scores.map((item) => <div key={item.trait}><div className="bar-label"><strong>{item.label}</strong><span>{item.score}/100</span></div><div className="score-track"><span style={{ width: `${item.score}%` }} /></div></div>)}</div>
       </section>
       <section className="results-detail"><div className="section-heading"><p className="section-kicker">Your scores</p><h2>What each trait can mean.</h2></div>{scores.map((item, index) => { const copy = interpretation[item.trait][item.band]; return <article className="result-card" key={item.trait}><div className="result-index">0{index + 1}</div><div className="result-name"><p>{traitMeta[item.trait].short}</p><h3>{item.label}</h3><span className={`band-pill band-${item.band}`}>{item.band} range</span></div><div className="result-score"><strong>{item.score}</strong><span>out of 100</span></div><div className="result-copy"><h4>{copy.headline}</h4><p>{copy.text}</p><div className="balance-note"><strong>Keep in mind</strong><p>{copy.balance}</p></div></div></article>})}</section>
-      <section className="next-cta"><p className="eyebrow">Your next step</p><h2>Find resources that fit your goals.</h2><p>Choose what you want help with, and Path Five will suggest a few activities based on your results.</p><a className="button button-light" href="/toolkit">Open my toolkit →</a></section>
+      <section className="next-cta"><p className="eyebrow">Your next step</p><h2>Find resources you would actually try.</h2><p>Tell us what fits your time, interests, and comfort level. Your answers will shape the suggestions in Your Toolkit.</p><a className="button button-light" href="/preferences">Choose activity preferences →</a></section>
     </PageShell>
   );
 }
