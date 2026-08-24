@@ -11,6 +11,7 @@ export const emptyProfile: LocalProfile = {
   bookmarks: [],
   dismissed: [],
   activityHistory: [],
+  generatedActivities: [],
 };
 
 export function loadProfile(): LocalProfile {

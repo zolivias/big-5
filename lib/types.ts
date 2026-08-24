@@ -47,6 +47,8 @@ export type Recommendation = {
   why: string;
   action: string;
   duration: string;
+  source?: "curated" | "ai";
+  feedbackReason?: string;
   trait?: TraitKey;
   bands?: Array<TraitScore["band"]>;
   traitMatches?: Array<{
@@ -77,6 +79,7 @@ export type LocalProfile = {
   bookmarks: string[];
   dismissed: string[];
   activityHistory?: ActivityCompletion[];
+  generatedActivities?: Recommendation[];
   activityPreferences?: ActivityPreferences;
   completedAt?: string;
 };
