@@ -1,4 +1,4 @@
-import type { ActivityPreferences, GoalKey, Recommendation, TraitKey, TraitScore } from "./types";
+import type { ActivityCompletion, ActivityPreferences, GoalKey, Recommendation, TraitKey, TraitScore } from "./types";
 
 export const goals: Array<{ key: GoalKey; label: string; icon: string }> = [
   { key: "studying", label: "Study with less friction", icon: "✦" },
@@ -96,8 +96,27 @@ function preferenceFit(item: Recommendation, preferences?: ActivityPreferences) 
   return score;
 }
 
-export function getRecommendations(scores: TraitScore[], goal: GoalKey, preferences?: ActivityPreferences) {
-  return activityLibrary.filter((item) => item.goal === goal).map((item,index)=>({item,index,score:traitFit(item,scores)+preferenceFit(item,preferences)})).sort((a,b)=>b.score-a.score||a.index-b.index).map(({item})=>item);
+function feedbackFit(item: Recommendation, history: ActivityCompletion[] = []) {
+  return history.reduce((score, completion) => {
+    const completed = activityLibrary.find((entry) => entry.id === completion.activityId);
+    if (!completed?.preferenceTags || !item.preferenceTags) return score;
+    const sharedInterests = completed.preferenceTags.interests?.some((value) => item.preferenceTags?.interests?.includes(value));
+    const sharedBenefits = completed.preferenceTags.benefits?.some((value) => item.preferenceTags?.benefits?.includes(value));
+    const similarFormat = sharedInterests || sharedBenefits;
+    if (completion.helpful === "yes") score += similarFormat ? 4 : 0;
+    if (completion.helpful === "somewhat") score += similarFormat ? 2 : 0;
+    if (completion.helpful === "no") score -= similarFormat ? 4 : 0;
+    if (completion.similar === "yes") score += similarFormat ? 5 : 0;
+    if (completion.similar === "maybe") score += similarFormat ? 2 : 0;
+    if (completion.similar === "no") score -= similarFormat ? 5 : 0;
+    const desiredChallenges = completion.nextStep === "higher" ? ["moderate", "stretch"] : completion.nextStep === "easier" ? ["easy", "small"] : [];
+    if (desiredChallenges.some((value) => item.preferenceTags?.challenges?.includes(value as ActivityPreferences["challenge"]))) score += 4;
+    return score;
+  }, 0);
+}
+
+export function getRecommendations(scores: TraitScore[], goal: GoalKey, preferences?: ActivityPreferences, history: ActivityCompletion[] = []) {
+  return activityLibrary.filter((item) => item.goal === goal).map((item,index)=>({item,index,score:traitFit(item,scores)+preferenceFit(item,preferences)+feedbackFit(item,history)})).sort((a,b)=>b.score-a.score||a.index-b.index).map(({item})=>item);
 }
 
 export function describeRecommendationReason(item: Recommendation, scores: TraitScore[], preferences?: ActivityPreferences) {

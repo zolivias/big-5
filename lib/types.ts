@@ -2,6 +2,14 @@ export type TraitKey = "extraversion" | "agreeableness" | "conscientiousness" | 
 
 export type GoalKey = "studying" | "relationships" | "stress" | "confidence" | "reflection";
 
+export type ActivityCompletion = {
+  activityId: string;
+  completedAt: string;
+  helpful: "yes" | "somewhat" | "no";
+  similar: "yes" | "maybe" | "no";
+  nextStep: "easier" | "same" | "higher";
+};
+
 export type ActivityPreferences = {
   setting: "solo" | "pair" | "small-group" | "large-group" | "depends";
   role: "lead" | "equal" | "participant" | "no-preference";
@@ -68,6 +76,7 @@ export type LocalProfile = {
   goal: GoalKey;
   bookmarks: string[];
   dismissed: string[];
+  activityHistory?: ActivityCompletion[];
   activityPreferences?: ActivityPreferences;
   completedAt?: string;
 };

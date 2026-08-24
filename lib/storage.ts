@@ -10,6 +10,7 @@ export const emptyProfile: LocalProfile = {
   goal: "studying",
   bookmarks: [],
   dismissed: [],
+  activityHistory: [],
 };
 
 export function loadProfile(): LocalProfile {
