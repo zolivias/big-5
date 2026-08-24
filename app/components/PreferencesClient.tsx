@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PageShell } from "./Shell";
-import { emptyActivityPreferences, preferenceQuestions } from "../../lib/preferences";
+import { emptyActivityPreferences, preferenceQuestions, toggleMultiplePreference } from "../../lib/preferences";
 import { loadProfile, saveProfile } from "../../lib/storage";
 import type { ActivityPreferences, LocalProfile } from "../../lib/types";
 
@@ -19,11 +19,8 @@ export function PreferencesClient() {
     setAnswers((current) => {
       if (!multiple) return { ...current, [key]: value };
       const values = [...((current[key] as string[] | undefined) || [])];
-      if (key === "benefits" && value === "none") return { ...current, [key]: [value] };
-      if (key === "benefits" && !values.includes(value) && values.filter((item) => item !== "none").length >= 3) { setNotice("Choose up to three benefits."); return current; }
-      if ((key === "constraints" && value === "none") || (key === "interests" && value === "open")) return { ...current, [key]: [value] };
-      const withoutExclusive = values.filter((item) => item !== "none" && item !== "open");
-      const next = withoutExclusive.includes(value) ? withoutExclusive.filter((item) => item !== value) : [...withoutExclusive, value];
+      if (key === "benefits" && value !== "none" && !values.includes(value) && values.filter((item) => item !== "none").length >= 3) { setNotice("Choose up to three benefits."); return current; }
+      const next = toggleMultiplePreference(key as "benefits" | "constraints" | "interests", values, value);
       return { ...current, [key]: next };
     });
   }

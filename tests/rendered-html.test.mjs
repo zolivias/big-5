@@ -13,9 +13,9 @@ test("server-renders the Path Five landing page", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Path Five/);
-  assert.match(html, /Five traits/);
-  assert.match(html, /Your path/);
-  assert.match(html, /Discover your traits/);
+  assert.match(html, /personalized self-growth toolkit/i);
+  assert.match(html, /Built around you/);
+  assert.match(html, /Build my toolkit/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
 

@@ -115,3 +115,12 @@ export const preferenceQuestions: Array<{
 export const emptyActivityPreferences: Partial<ActivityPreferences> = {
   benefits: [], constraints: [], interests: [],
 };
+
+export function toggleMultiplePreference(key: "benefits" | "constraints" | "interests", current: string[], value: string) {
+  const exclusive = key === "interests" ? "open" : "none";
+  if (value === exclusive) return current.length === 1 && current[0] === value ? [] : [value];
+  const selected = current.filter((item) => item !== exclusive);
+  if (selected.includes(value)) return selected.filter((item) => item !== value);
+  if (key === "benefits" && selected.length >= 3) return selected;
+  return [...selected, value];
+}

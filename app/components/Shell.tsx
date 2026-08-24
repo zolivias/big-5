@@ -13,7 +13,7 @@ export function Header() {
         <a href="/toolkit">Your Toolkit</a>
         <a className="support-nav" href="/support"><span aria-hidden="true">♡</span> Get Support</a>
       </nav>
-      <a className="button button-small" href="/assessment">Take the test <span aria-hidden="true">→</span></a>
+      <a className="button button-small" href="/assessment">Build My Toolkit <span aria-hidden="true">→</span></a>
     </header>
   );
 }

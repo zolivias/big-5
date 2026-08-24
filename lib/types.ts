@@ -41,6 +41,11 @@ export type Recommendation = {
   duration: string;
   trait?: TraitKey;
   bands?: Array<TraitScore["band"]>;
+  traitMatches?: Array<{
+    trait: TraitKey;
+    bands: Array<TraitScore["band"]>;
+    reason: string;
+  }>;
   preferenceTags?: {
     settings?: ActivityPreferences["setting"][];
     roles?: ActivityPreferences["role"][];

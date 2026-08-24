@@ -13,18 +13,20 @@ export function HomePage() {
     <PageShell>
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow"><span aria-hidden="true">✦</span> Science-backed self-discovery</p>
-          <h1>Five traits.<br /><em>Your path</em> forward.</h1>
-          <p className="hero-lede">Learn how you tend to think, plan, connect, and respond to stress. Then get practical tips based on your results.</p>
-          <div className="hero-actions"><a className="button" href="/assessment">Discover your traits <span aria-hidden="true">→</span></a><a className="text-link" href="/methodology">See how it works <span aria-hidden="true">↘</span></a></div>
+          <p className="eyebrow"><span aria-hidden="true">✦</span> A personalized self-growth toolkit</p>
+          <h1>Practical support.<br /><em>Built around you.</em></h1>
+          <p className="hero-lede">Find activities that fit your goals, personality, interests, time, and comfort level. The Big Five assessment is one starting point, not the destination.</p>
+          <div className="hero-actions"><a className="button" href="/assessment">Build my toolkit <span aria-hidden="true">→</span></a><a className="text-link" href="/methodology">See how it works <span aria-hidden="true">↘</span></a></div>
           <div className="trust-row"><span>About 8 minutes</span><span>Private by design</span><span>Free to explore</span></div>
         </div>
-        <div className="profile-card" aria-label="Example Big Five trait profile">
-          <div className="profile-card-head"><div><p className="eyebrow">Example result</p><h2>Your five-trait profile</h2></div><span className="profile-five">5</span></div>
-          <div className="profile-scales">
-            {traits.map(([letter, name, , score]) => <div className="profile-scale" key={letter}><span className={`profile-letter profile-${letter.toLowerCase()}`}>{letter}</span><div><div className="profile-scale-name"><strong>{name}</strong><span>{score}</span></div><div className="profile-track"><span style={{ width: `${score}%` }} /></div></div></div>)}
+        <div className="profile-card toolkit-preview" aria-label="Example personalized activity toolkit">
+          <div className="profile-card-head"><div><p className="eyebrow">Example toolkit</p><h2>Ideas you might actually try</h2></div><span className="profile-five">↗</span></div>
+          <div className="toolkit-preview-list">
+            <article><span>10 min · solo</span><h3>The ten-minute opening</h3><p>For getting started with less friction.</p></article>
+            <article><span>5 min · no supplies</span><h3>Move for one song</h3><p>For a quick change in energy or mood.</p></article>
+            <article><span>Pair · small challenge</span><h3>Ask before advising</h3><p>For clearer, more useful support.</p></article>
           </div>
-          <p className="profile-note">Five separate scores. No personality types.</p>
+          <p className="profile-note">Your goals and preferences shape the toolkit. Personality is only one part.</p>
         </div>
       </section>
 
@@ -39,9 +41,9 @@ export function HomePage() {
       <section className="steps-section">
         <p className="section-kicker">How it works</p><h2>Results you can use.</h2>
         <div className="steps-grid">
-          <article><span className="step-number">01</span><h3>Notice your patterns</h3><p>Answer 50 simple prompts based on how you see yourself today. There are no right answers.</p></article>
-          <article><span className="step-number">02</span><h3>Read your results</h3><p>See all five scores with clear explanations of what lower, middle, and higher scores can mean.</p></article>
-          <article><span className="step-number">03</span><h3>Choose useful resources</h3><p>Pick a goal and get practical activities based on your results.</p></article>
+          <article><span className="step-number">01</span><h3>Share what fits</h3><p>Tell us about your goals, interests, available time, and the kinds of activities you would consider.</p></article>
+          <article><span className="step-number">02</span><h3>Add personality context</h3><p>Use the Big Five to describe broad tendencies, without turning them into a type or diagnosis.</p></article>
+          <article><span className="step-number">03</span><h3>Explore your toolkit</h3><p>Browse ranked activities, save useful ideas, dismiss poor fits, and switch goals whenever you want.</p></article>
         </div>
         <a className="button button-light" href="/assessment">Start your path <span aria-hidden="true">→</span></a>
       </section>
