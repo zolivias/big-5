@@ -116,11 +116,12 @@ export const emptyActivityPreferences: Partial<ActivityPreferences> = {
   benefits: [], constraints: [], interests: [],
 };
 
-export function toggleMultiplePreference(key: "benefits" | "constraints" | "interests", current: string[], value: string) {
+export function setMultiplePreference(key: "benefits" | "constraints" | "interests", current: string[], value: string, checked: boolean) {
   const exclusive = key === "interests" ? "open" : "none";
-  if (value === exclusive) return current.length === 1 && current[0] === value ? [] : [value];
-  const selected = current.filter((item) => item !== exclusive);
-  if (selected.includes(value)) return selected.filter((item) => item !== value);
+  if (value === exclusive) return checked ? [value] : [];
+
+  const selected = current.filter((item) => item !== exclusive && item !== value);
+  if (!checked) return selected;
   if (key === "benefits" && selected.length >= 3) return selected;
   return [...selected, value];
 }
