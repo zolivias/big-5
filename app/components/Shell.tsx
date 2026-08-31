@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { AccountStatus } from "./AccountStatus";
 
 export function Brand() {
   return <a className="brand" href="/" aria-label="Path Five home"><span className="brand-mark" aria-hidden="true">5</span><span>Path Five</span></a>;
@@ -12,6 +13,7 @@ export function Header() {
         <a href="/methodology">The Science</a>
         <a href="/toolkit">Your Toolkit</a>
         <a className="support-nav" href="/support"><span aria-hidden="true">♡</span> Get Support</a>
+        <AccountStatus />
       </nav>
       <a className="button button-small" href="/assessment">Build My Toolkit <span aria-hidden="true">→</span></a>
     </header>
@@ -29,7 +31,7 @@ export function Footer() {
 }
 
 export function PageShell({ children }: { children: ReactNode }) {
-  return <><Header /><main>{children}</main><Footer /><a className="floating-support" href="/support" aria-label="Get Support"><span aria-hidden="true">♡</span><span>Get Support</span></a></>;
+  return <><Header /><AccountStatus warning /><main>{children}</main><Footer /><a className="floating-support" href="/support" aria-label="Get Support"><span aria-hidden="true">♡</span><span>Get Support</span></a></>;
 }
 
 export function InfoHero({ eyebrow, title, intro }: { eyebrow: string; title: string; intro: string }) {

@@ -1,6 +1,8 @@
 import type { LocalProfile } from "./types";
 
 export const STORAGE_KEY = "path-five-profile-v1";
+export const CLOUD_SYNC_KEY = "path-five-cloud-sync-enabled";
+let cloudSaveTimer: ReturnType<typeof setTimeout> | undefined;
 
 export const emptyProfile: LocalProfile = {
   version: 1,
@@ -32,7 +34,14 @@ export function loadProfile(): LocalProfile {
 }
 
 export function saveProfile(profile: LocalProfile) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(profile)); } catch { /* private browsing or full storage */ }
+  try {
+    const next = { ...profile, updatedAt: new Date().toISOString() };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    if (localStorage.getItem(CLOUD_SYNC_KEY) === "1") {
+      clearTimeout(cloudSaveTimer);
+      cloudSaveTimer = setTimeout(() => { void fetch("/api/account", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ profile: next }) }).catch(() => undefined); }, 700);
+    }
+  } catch { /* private browsing or full storage */ }
 }
 
 export function clearProfile() {

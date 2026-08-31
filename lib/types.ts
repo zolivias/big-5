@@ -80,6 +80,7 @@ export type LocalProfile = {
   dismissed: string[];
   activityHistory?: ActivityCompletion[];
   generatedActivities?: Recommendation[];
+  updatedAt?: string;
   activityPreferences?: ActivityPreferences;
   completedAt?: string;
 };
