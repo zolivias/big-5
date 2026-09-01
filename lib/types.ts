@@ -39,6 +39,10 @@ export type TraitScore = {
   band: "lower" | "middle" | "higher";
 };
 
+export type EvidenceSourceId = "retrieval" | "workedExamples" | "utilityValue" | "implementation" | "listening" | "apology" | "assertiveness" | "affectLabeling" | "worry" | "music" | "exercise" | "selfEfficacy" | "monitoring" | "reflection" | "personalityContext" | "youthLeisure" | "activityFit" | "selfDetermination";
+
+export type EvidenceLevel = "strong" | "promising" | "contextual";
+
 export type Recommendation = {
   id: string;
   goal: GoalKey;
@@ -47,15 +51,12 @@ export type Recommendation = {
   why: string;
   action: string;
   duration: string;
-  source?: "curated" | "ai";
-  feedbackReason?: string;
-  trait?: TraitKey;
-  bands?: Array<TraitScore["band"]>;
-  traitMatches?: Array<{
-    trait: TraitKey;
-    bands: Array<TraitScore["band"]>;
-    reason: string;
-  }>;
+  evidence: {
+    level: EvidenceLevel;
+    summary: string;
+    limitation: string;
+    sources: EvidenceSourceId[];
+  };
   preferenceTags?: {
     settings?: ActivityPreferences["setting"][];
     roles?: ActivityPreferences["role"][];
@@ -79,7 +80,6 @@ export type LocalProfile = {
   bookmarks: string[];
   dismissed: string[];
   activityHistory?: ActivityCompletion[];
-  generatedActivities?: Recommendation[];
   updatedAt?: string;
   activityPreferences?: ActivityPreferences;
   completedAt?: string;

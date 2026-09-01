@@ -13,12 +13,14 @@ export default function MethodologyPage() {
         <article><span>02</span><h2>Transparent scoring</h2><p>Each trait is measured with ten statements. Some are keyed in the opposite direction to reduce automatic responding. Answers are scored from 1 to 5, reversed where required, summed, and normalized to a 0 to 100 scale.</p></article>
         <article><span>03</span><h2>No false precision</h2><p>Your score is not shown as a population percentile because Path Five does not yet use a carefully matched normative sample for ages 13 to 24. The ranges are descriptive signposts, not rankings.</p></article>
         <article><span>04</span><h2>Context still matters</h2><p>Mood, culture, environment, life stage, and the way you interpret each question can influence responses. Treat results as a starting point for reflection rather than a permanent verdict.</p></article>
+        <article><span>05</span><h2>Traits do not prescribe activities</h2><p>Current evidence does not show that a Big Five band can reliably determine which activity will improve someone’s well-being. Path Five therefore ranks reviewed activities mainly from your preferences, practical constraints, and feedback.</p></article>
       </section>
       <section className="citation-box">
         <p className="section-kicker">Source &amp; attribution</p><h2>International Personality Item Pool</h2>
         <p>Assessment statements and scoring keys follow the IPIP 50-item sample questionnaire and Goldberg’s Big-Five factor markers. IPIP items are in the public domain.</p>
         <a className="text-link" href="https://ipip.ori.org/new_ipip-50-item-scale.htm" target="_blank" rel="noreferrer">View the original questionnaire ↗</a>
       </section>
+      <section className="citation-box"><p className="section-kicker">Recommendation research</p><h2>Every toolkit activity shows its evidence.</h2><p>Strong, promising, and contextual labels distinguish direct tests from limited or observational findings. Each card also names the most important limitation.</p><a className="text-link" href="/evidence">Explore the Evidence Library →</a></section>
       <section className="next-cta"><h2>Curious about your pattern?</h2><p>Answer based on how you usually see yourself right now. There are no right or wrong answers.</p><a className="button button-light" href="/assessment">Take the assessment →</a></section>
     </PageShell>
   );

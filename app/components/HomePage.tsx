@@ -15,7 +15,7 @@ export function HomePage() {
         <div className="hero-copy">
           <p className="eyebrow"><span aria-hidden="true">✦</span> A personalized self-growth toolkit</p>
           <h1>Practical support.<br /><em>Built around you.</em></h1>
-          <p className="hero-lede">Find activities that fit your goals, personality, interests, time, and comfort level. The Big Five assessment is one starting point, not the destination.</p>
+          <p className="hero-lede">Find evidence-reviewed activities that fit your goals, interests, time, and comfort level. The Big Five assessment is one starting point, not the destination.</p>
           <div className="hero-actions"><a className="button" href="/assessment">Build my toolkit <span aria-hidden="true">→</span></a><a className="text-link" href="/methodology">See how it works <span aria-hidden="true">↘</span></a></div>
           <div className="trust-row"><span>About 8 minutes</span><span>Private by design</span><span>Free to explore</span></div>
         </div>

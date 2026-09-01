@@ -13,7 +13,6 @@ export const emptyProfile: LocalProfile = {
   bookmarks: [],
   dismissed: [],
   activityHistory: [],
-  generatedActivities: [],
 };
 
 export function loadProfile(): LocalProfile {
@@ -21,7 +20,9 @@ export function loadProfile(): LocalProfile {
   try {
     const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
     if (parsed?.version !== 1) return emptyProfile;
-    const profile = { ...emptyProfile, ...parsed } as LocalProfile;
+    const sanitized = { ...parsed };
+    delete sanitized.generatedActivities;
+    const profile = { ...emptyProfile, ...sanitized } as LocalProfile;
     profile.scores = profile.scores.map((item) => {
       if (item.trait !== "emotionalStability" || item.label === "Neuroticism") return item;
       const score = 100 - item.score;

@@ -24,7 +24,7 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div><Brand /><p>Personality insight for your next chapter.</p></div>
-      <div className="footer-links"><a href="/methodology">Methodology</a><a href="/privacy">Privacy</a><a href="/disclaimer">Disclaimer</a><a href="/support">Get Support</a></div>
+      <div className="footer-links"><a href="/methodology">Methodology</a><a href="/evidence">Evidence Library</a><a href="/privacy">Privacy</a><a href="/disclaimer">Disclaimer</a><a href="/support">Get Support</a></div>
       <p className="footer-note">Path Five is educational and does not provide mental health diagnosis or treatment.</p>
     </footer>
   );
