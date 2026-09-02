@@ -13,8 +13,8 @@ export default function EvidencePage() {
       <article><strong>Contextual</strong><h2>Theory or observational evidence</h2><p>The source supports the rationale or association, but does not prove the activity causes the stated outcome.</p></article>
     </section>
     <section className="research-library">
-      <div className="section-heading"><p className="section-kicker">Reviewed sources</p><h2>The papers behind the toolkit</h2><p>These links lead to the publisher, DOI record, PubMed, or an open-access article.</p></div>
-      <div className="research-list">{Object.entries(researchSources).map(([id, source], index) => <article id={id} key={id}><span>{String(index + 1).padStart(2,"0")}</span><div><p className="research-citation">{source.citation}</p><h3>{source.title}</h3><p>{source.note}</p><a className="text-link" href={source.url} target="_blank" rel="noreferrer">Read the Paper ↗</a></div></article>)}</div>
+      <div className="section-heading"><p className="section-kicker">Reviewed sources</p><h2>The papers behind the toolkit</h2><p>Each entry includes verified authors and an original plain-language summary, followed by a link to the published source.</p></div>
+      <div className="research-list">{Object.entries(researchSources).map(([id, source], index) => <article id={id} key={id}><span>{String(index + 1).padStart(2,"0")}</span><div><p className="research-citation">{source.citation}</p><h3>{source.title}</h3><p className="research-authors">{source.authors}</p><p className="research-publication">{source.publication}</p><div className="plain-abstract"><strong>Plain-language abstract</strong><p>{source.plainLanguageAbstract}</p></div><a className="text-link" href={source.url} target="_blank" rel="noreferrer">Open the Original Paper ↗</a></div></article>)}</div>
     </section>
     <section className="soft-note"><h2>Evidence does not guarantee a result.</h2><p>Research describes average findings in particular samples. An activity may help, do nothing, or feel unhelpful for an individual. Path Five uses your preferences and feedback to adjust what appears next.</p></section>
   </PageShell>;
