@@ -41,7 +41,7 @@ export function AssessmentClient() {
 
   return (
     <main className="assessment-shell">
-      <div className="assessment-top"><a className="brand" href="/"><span className="brand-mark">5</span><span>Path Five</span></a><a href="/support" className="support-nav">♡ Get Support</a></div>
+      <div className="assessment-top"><a className="brand" href="/" aria-label="Path Five home"><img className="brand-mark" src="/path-five-brand-icon.png" alt="" aria-hidden="true" width="40" height="40" /><span>Path Five</span></a><a href="/support" className="support-nav">♡ Get Support</a></div>
       <div className="assessment-progress" aria-label={`${answered} of 50 questions answered`}><span style={{ width: `${(answered / 50) * 100}%` }} /></div>
       <section className="question-card question-page">
         <div className="question-meta"><span>Page {currentPage + 1} of 10</span><span>{answered} of 50 answered</span></div>

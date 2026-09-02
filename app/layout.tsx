@@ -5,8 +5,9 @@ export const metadata: Metadata = {
   title: { default: "Path Five", template: "%s | Path Five" },
   description: "A private self-growth toolkit with practical activities shaped by your goals, preferences, and personality.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: [{ url: "/path-five-favicon.png", type: "image/png", sizes: "64x64" }],
+    shortcut: "/path-five-favicon.png",
+    apple: [{ url: "/path-five-app-icon.png", type: "image/png", sizes: "180x180" }],
   },
   openGraph: { title: "Path Five", description: "Practical support, built around you.", type: "website", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Path Five personalized self-growth toolkit" }] },
   twitter: { card: "summary_large_image", title: "Path Five", description: "Practical support, built around you.", images: ["/og.png"] },

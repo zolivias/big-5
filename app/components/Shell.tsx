@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { AccountStatus } from "./AccountStatus";
 
 export function Brand() {
-  return <a className="brand" href="/" aria-label="Path Five home"><span className="brand-mark" aria-hidden="true">5</span><span>Path Five</span></a>;
+  return <a className="brand" href="/" aria-label="Path Five home"><img className="brand-mark" src="/path-five-brand-icon.png" alt="" aria-hidden="true" width="40" height="40" /><span>Path Five</span></a>;
 }
 
 export function Header() {
